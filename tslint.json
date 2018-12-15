@@ -1,0 +1,23 @@
+
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:latest",
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-eslint-rules",
+    "tslint-config-prettier"
+  ],
+  "jsRules": {},
+  "rules": {
+    "prettier": true,
+    "interface-name": [true, "never-prefix"],
+    "no-implicit-dependencies": false,
+    "no-submodule-imports": false,
+    "no-empty-interface": false,
+    "object-literal-sort-keys": false,
+    "jsx-no-lambda": false,
+    "no-empty": false
+  },
+  "rulesDirectory": ["tslint-plugin-prettier"]
+}

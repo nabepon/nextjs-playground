@@ -1,30 +1,86 @@
 {
-  "name": "with-jest-typescript",
+  "name": "nextjs-playground",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest",
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "test": "cross-env NODE_ENV=test jest && http-server coverage/lcov-report -o",
+    "dev": "nodemon --exec babel-node server/index.ts --extensions .ts",
+    "build": "cross-env NODE_ENV=production rimraf built && babel server -d built --extensions .ts && next build",
+    "start": "cross-env NODE_ENV=production node built/index.js",
+    "tslint": "tslint --exclude **/*.d.ts --project . --fix src/**/*.ts src/**/*.tsx pages/**/*.ts pages/**/*.tsx",
+    "stylelint": "stylelint src/**/*.*",
+    "docz": "docz dev",
+    "typecheck": "tsc --project . --noEmit"
   },
   "dependencies": {
-    "next": "^6.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "@emotion/core": "^10.0.0",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "next": "^7.0.2",
+    "next-redux-wrapper": "^2.0.0",
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.7",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@types/jest": "^23.0.0",
-    "@types/next": "^2.4.8",
-    "@types/react": "^16.0.41",
-    "@types/react-dom": "^16.0.4",
-    "@zeit/next-typescript": "1.1.0",
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.1.6",
+    "@babel/node": "^7.2.0",
+    "@types/axios": "^0.14.0",
+    "@types/jest": "^23.3.10",
+    "@types/next": "^7.0.5",
+    "@types/next-redux-wrapper": "^2.0.0",
+    "@types/node": "^10.12.13",
+    "@types/react": "^16.7.11",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-redux": "^6.0.10",
+    "@types/redux": "^3.6.0",
+    "@types/redux-thunk": "^2.1.0",
+    "@zeit/next-typescript": "^1.1.1",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "23.0.1",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "jest": "^23.1.0",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-emotion": "^10.0.0",
+    "babel-plugin-transform-define": "^1.3.0",
+    "cross-env": "^5.2.0",
+    "docz": "^0.12.15",
+    "docz-theme-default": "^0.12.15",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "husky": "^1.2.0",
+    "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
+    "nodemon": "^1.18.8",
+    "prettier": "^1.15.3",
     "react-addons-test-utils": "^15.6.2",
-    "react-test-renderer": "^16.2.0",
-    "typescript": "^2.7.2"
+    "react-test-renderer": "^16.6.3",
+    "rimraf": "^2.6.2",
+    "stylelint": "^9.9.0",
+    "stylelint-config-prettier": "^4.0.0",
+    "stylelint-config-recess-order": "^2.0.0",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.5.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run typecheck && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "tslint --fix",
+      "stylelint",
+      "git add"
+    ]
   }
 }

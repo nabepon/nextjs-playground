@@ -1,3 +1,2 @@
-const IndexPage = () => <h1>Testing Next.js App written in TypeScript with Jest</h1>;
-
-export default IndexPage;
+import page from '../src/pages/index';
+export default page;
