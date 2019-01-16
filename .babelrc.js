@@ -10,15 +10,12 @@ module.exports = {
   ],
   env: {
     development: {
-      plugins: [['emotion', { sourceMap: true }]],
       presets: ['next/babel', '@zeit/next-typescript/babel'],
     },
     production: {
-      plugins: ['emotion'],
       presets: ['next/babel', '@zeit/next-typescript/babel'],
     },
     test: {
-      plugins: [['emotion', { sourceMap: true }]],
       presets: [
         [
           'next/babel',

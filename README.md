@@ -4,7 +4,6 @@
 
 * Next.js
 * Redux
-* emotion
 * TypeScript
 * tslint
 * jest

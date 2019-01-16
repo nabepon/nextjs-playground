@@ -1,2 +1,5 @@
 const withTypescript = require('@zeit/next-typescript');
-module.exports = withTypescript();
+const withSass = require('@zeit/next-sass');
+const withImages = require('next-images');
+
+module.exports = withImages(withTypescript(withSass({ cssModules: true })));

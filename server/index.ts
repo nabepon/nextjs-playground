@@ -9,20 +9,6 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   const server = express();
-  server.use(bodyParser.json());
-
-  server.get('/api/*', (req, res) => {
-    setTimeout(() => {
-      res.json({
-        sampleApi: {
-          foo: 'foo',
-          bar: [1, 2, 3],
-          params: req.params['0'],
-        },
-      });
-    }, 500);
-  });
-
   server.get('*', (req, res) => {
     return handle(req, res);
   });

@@ -1,4 +1,3 @@
-import { jsx } from '@emotion/core';
 import axios from 'axios';
 import withRedux from 'next-redux-wrapper';
 import App, { Container } from 'next/app';
@@ -8,11 +7,9 @@ import Alert from '../src/modules/Modals/Alert';
 import { initStore } from '../src/redux/store';
 
 declare var global: {
-  jsx: any;
   axios: any;
 };
 
-global.jsx = jsx;
 global.axios = axios;
 
 export default withRedux(initStore)(
