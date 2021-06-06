@@ -52,7 +52,7 @@
     "lint-staged": "^8.1.0",
     "next-images": "^1.0.4",
     "node-sass": "^4.11.0",
-    "nodemon": "^1.18.8",
+    "nodemon": "1.19.4",
     "prettier": "^1.15.3",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.6.3",
